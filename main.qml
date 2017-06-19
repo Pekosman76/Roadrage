@@ -5,7 +5,7 @@ ApplicationWindow {
     visible: true
     width: 300
     height: 500
-    title: qsTr("Hello World")
+    title: qsTr("!!! ROAD RAGE !!!")
 
 
     Game{

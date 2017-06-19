@@ -35,7 +35,6 @@ Rectangle {
     property int j :1
     property int k :1
 
-
     Component.onCompleted: {
 
         car[1]= carcomponent.createObject(parent, {"x":(rootgame.width/2)-15, "y": rootgame.height-50, "img": "qrc:/Assets/car.png"});
@@ -88,7 +87,6 @@ Rectangle {
         anchors.top : parent.top
         anchors.right : parent.right
     }
-
 
     Keys.onPressed: {
 
