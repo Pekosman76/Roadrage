@@ -1,4 +1,5 @@
 import QtQuick 2.0
+import QtGraphicalEffects 1.0
 
 Rectangle {
 
@@ -10,6 +11,7 @@ Rectangle {
 
     Image
     {
+        id : backgroundimg
         anchors.fill: parent
         source : "qrc:/Assets/road.png"
     }
@@ -117,6 +119,34 @@ Rectangle {
 
     function stopchrono(){
         chrono.startd = false
+    }
+
+    Timer {
+        interval: 30000;
+        running: true;
+
+        onTriggered: {
+
+            backgroundimg.source = "qrc:/Assets/road2.png"
+        }
+    }
+    Timer {
+        interval: 45000;
+        running: true;
+
+        onTriggered: {
+
+            backgroundimg.source = "qrc:/Assets/road3.png"
+        }
+    }
+    Timer {
+        interval: 60000;
+        running: true;
+
+        onTriggered: {
+
+            backgroundimg.source = "qrc:/Assets/road4.png"
+        }
     }
 }
 

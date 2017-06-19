@@ -12,5 +12,8 @@
         <file>F1.qml</file>
         <file>Assets/f1.png</file>
         <file>Time.qml</file>
+        <file>Assets/road2.png</file>
+        <file>Assets/road3.png</file>
+        <file>Assets/road4.png</file>
     </qresource>
 </RCC>
