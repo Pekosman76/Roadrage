@@ -6,19 +6,14 @@ Rectangle {
     id : rootgame
     width: 300
     height: 500
+    color : "grey"
 
     focus: true
-
-    Image
-    {
-        id : backgroundimg
-        anchors.fill: parent
-        source : "qrc:/Assets/road.png"
-    }
 
     property int intervaltruck : 2500
     property int intervalcars : 3500
     property int intervalf1 : 4500
+    property int intervalbonus :8000
 
     property var carcomponent :Qt.createComponent("Car.qml")
     property var car :[]
@@ -32,10 +27,13 @@ Rectangle {
     property var f1component :Qt.createComponent("F1.qml")
     property var f1 :[]
 
+    property var bandcomponent :Qt.createComponent("Band.qml")
+    property var band :[]
 
     property int i :1
     property int j :1
     property int k :1
+    property int l :1
 
     Component.onCompleted: {
 
@@ -45,13 +43,30 @@ Rectangle {
 
 
     Timer {
+
+        interval: 300;
+        running: true;
+        repeat: true
+
+        onTriggered: {
+
+            band[l]=bandcomponent.createObject(parent, {"x":100, "y": 0});
+            l++
+            band[l]=bandcomponent.createObject(parent, {"x":200, "y": 0});
+            l++
+        }
+
+
+    }
+
+    Timer {
         interval: intervaltruck;
         running: true;
         repeat: true
 
         onTriggered: {
 
-            truckcomponent[i]=truckcomponent.createObject(parent, {"x":35, "y": 0, "img": "qrc:/Assets/truck.png", "isMovingdown" : true});
+            truck[i]=truckcomponent.createObject(parent, {"x":35, "y": -5, "img": "qrc:/Assets/truck.png", "isMovingdown" : true});
             i++;
             intervaltruck= getNumber()
         }
@@ -64,7 +79,7 @@ Rectangle {
 
         onTriggered: {
 
-            cars[j]=carscomponent.createObject(parent, {"x":135, "y": 0, "img": "qrc:/Assets/cars.png", "isMovingdown" : true});
+            cars[j]=carscomponent.createObject(parent, {"x":135, "y": -5, "img": "qrc:/Assets/cars.png", "isMovingdown" : true});
             j++;
             intervalcars = getNumber()
         }
@@ -122,21 +137,12 @@ Rectangle {
     }
 
     Timer {
-        interval: 30000;
-        running: true;
-
-        onTriggered: {
-
-            backgroundimg.source = "qrc:/Assets/road2.png"
-        }
-    }
-    Timer {
         interval: 45000;
         running: true;
 
         onTriggered: {
 
-            backgroundimg.source = "qrc:/Assets/road3.png"
+           rootgame.color = "#1756CD"
         }
     }
     Timer {
@@ -145,7 +151,16 @@ Rectangle {
 
         onTriggered: {
 
-            backgroundimg.source = "qrc:/Assets/road4.png"
+            rootgame.color = "#54D23A"
+        }
+    }
+    Timer {
+        interval: 75000;
+        running: true;
+
+        onTriggered: {
+
+            rootgame.color = "#1CCEDF"
         }
     }
 }

@@ -15,5 +15,6 @@
         <file>Assets/road2.png</file>
         <file>Assets/road3.png</file>
         <file>Assets/road4.png</file>
+        <file>Band.qml</file>
     </qresource>
 </RCC>
