@@ -4,7 +4,6 @@
         <file>Game.qml</file>
         <file>Car.qml</file>
         <file>Assets/car.png</file>
-        <file>Assets/road.png</file>
         <file>Truck.qml</file>
         <file>Assets/truck.png</file>
         <file>Cars.qml</file>
@@ -12,9 +11,6 @@
         <file>F1.qml</file>
         <file>Assets/f1.png</file>
         <file>Time.qml</file>
-        <file>Assets/road2.png</file>
-        <file>Assets/road3.png</file>
-        <file>Assets/road4.png</file>
         <file>Band.qml</file>
     </qresource>
 </RCC>
