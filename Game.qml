@@ -11,9 +11,8 @@ Rectangle {
     focus: true
 
     property int intervaltruck : 2500
-    property int intervalcars : 3500
-    property int intervalf1 : 4500
-    property int intervalbonus :8000
+    property int intervalcars : 4000
+    property int intervalf1 : 6000
 
     property var carcomponent :Qt.createComponent("Car.qml")
     property var car :[]
@@ -50,9 +49,9 @@ Rectangle {
 
         onTriggered: {
 
-            band[l]=bandcomponent.createObject(parent, {"x":100, "y": 0});
+            band[l]=bandcomponent.createObject(parent, {"x":100, "y": -50});
             l++
-            band[l]=bandcomponent.createObject(parent, {"x":200, "y": 0});
+            band[l]=bandcomponent.createObject(parent, {"x":200, "y": -50});
             l++
         }
 
@@ -66,7 +65,7 @@ Rectangle {
 
         onTriggered: {
 
-            truck[i]=truckcomponent.createObject(parent, {"x":35, "y": -5, "img": "qrc:/Assets/truck.png", "isMovingdown" : true});
+            truck[i]=truckcomponent.createObject(parent, {"x":35, "y": -20, "img": "qrc:/Assets/truck.png", "isMovingdown" : true});
             i++;
             intervaltruck= getNumber()
         }
@@ -79,7 +78,7 @@ Rectangle {
 
         onTriggered: {
 
-            cars[j]=carscomponent.createObject(parent, {"x":135, "y": -5, "img": "qrc:/Assets/cars.png", "isMovingdown" : true});
+            cars[j]=carscomponent.createObject(parent, {"x":135, "y": -20, "img": "qrc:/Assets/cars.png", "isMovingdown" : true});
             j++;
             intervalcars = getNumber()
         }
@@ -92,7 +91,7 @@ Rectangle {
 
         onTriggered: {
 
-            f1[k]=f1component.createObject(parent, {"x":235, "y": 0, "img": "qrc:/Assets/f1.png", "isMovingdown" : true});
+            f1[k]=f1component.createObject(parent, {"x":235, "y": -20, "img": "qrc:/Assets/f1.png", "isMovingdown" : true});
             k++;
             intervalf1 = getNumber()
         }

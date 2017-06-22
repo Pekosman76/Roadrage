@@ -2,13 +2,13 @@ import QtQuick 2.0
 
 Rectangle {
 
-    width: 10
+    width: 8
     height: 20
     color : "white"
 
     Timer{
 
-        interval: 30;
+        interval: 15;
         running: true;
         repeat: true
 
