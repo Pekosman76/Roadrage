@@ -13,7 +13,7 @@ Rectangle {
         repeat: true
 
         onTriggered: {
-            if(parent.y > 600)
+            if(parent.y > rootgame.height)
                 parent.destroy
             else
                 parent.y +=4

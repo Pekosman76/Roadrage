@@ -12,5 +12,7 @@
         <file>Assets/f1.png</file>
         <file>Time.qml</file>
         <file>Band.qml</file>
+        <file>SwipeArea.qml</file>
+        <file>Menu.qml</file>
     </qresource>
 </RCC>

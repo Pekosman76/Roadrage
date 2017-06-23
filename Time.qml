@@ -17,6 +17,7 @@ Item {
     property real msecs : 0;
     property int hue : 0;
     property bool startd : false
+    property string tim : label.text
 
     Timer {
         id: timerchrono

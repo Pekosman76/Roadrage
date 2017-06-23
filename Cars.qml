@@ -25,6 +25,9 @@ Image {
             {
                 rootgame.car[1].destroy()
                 rootgame.stopchrono()
+                game.visible = false
+                scores.writefile(rootgame.finaltime)
+                home.visible = true
             }
         }
     }

@@ -1,11 +1,10 @@
 import QtQuick 2.0
-import QtGraphicalEffects 1.0
 
 Rectangle {
 
     id : rootgame
-    width: 300
-    height: 500
+    width: parent.width
+    height: parent.height
     color : "grey"
 
     focus: true
@@ -34,24 +33,62 @@ Rectangle {
     property int k :1
     property int l :1
 
-    Component.onCompleted: {
+    property string finaltime : chrono.tim
 
-        car[1]= carcomponent.createObject(parent, {"x":(rootgame.width/2)-15, "y": rootgame.height-50, "img": "qrc:/Assets/car.png"});
-        chrono.startd= true
+
+
+    SwipeArea {
+
+        id: mouse
+        anchors.fill: parent
+        onSwipe: {
+            switch (direction) {
+            case "left":
+                if (car[1].x===((parent.width/3)/2)-15) break;
+                else
+            {
+                car[1].x -= (parent.width/3)
+            }
+            break
+
+            case "right":
+                if (car[1].x===((parent.width/3)+(parent.width/2))-15) break;
+                else{
+
+                car[1].x += (parent.width/3)
+            }
+            break
+            }
+        }
     }
 
+    Component.onCompleted: {
+
+    }
+
+    Timer {
+
+        interval: 10;
+        running: rootgame.visible;
+        repeat: false
+        onTriggered: {
+
+            car[1]= carcomponent.createObject(parent, {"x":(rootgame.width/2)-15, "y": rootgame.height-50, "img": "qrc:/Assets/car.png"});
+            chrono.startd= true
+        }
+    }
 
     Timer {
 
         interval: 300;
-        running: true;
+        running: rootgame.visible;
         repeat: true
 
         onTriggered: {
 
-            band[l]=bandcomponent.createObject(parent, {"x":100, "y": -50});
+            band[l]=bandcomponent.createObject(parent, {"x":parent.width/3, "y": -50});
             l++
-            band[l]=bandcomponent.createObject(parent, {"x":200, "y": -50});
+            band[l]=bandcomponent.createObject(parent, {"x":(parent.width/3)*2, "y": -50});
             l++
         }
 
@@ -60,12 +97,12 @@ Rectangle {
 
     Timer {
         interval: intervaltruck;
-        running: true;
+        running: rootgame.visible;
         repeat: true
 
         onTriggered: {
 
-            truck[i]=truckcomponent.createObject(parent, {"x":35, "y": -20, "img": "qrc:/Assets/truck.png", "isMovingdown" : true});
+            truck[i]=truckcomponent.createObject(parent, {"x": ((parent.width/3)/2)-15, "y": 0, "img": "qrc:/Assets/truck.png", "isMovingdown" : true});
             i++;
             intervaltruck= getNumber()
         }
@@ -73,12 +110,12 @@ Rectangle {
 
     Timer {
         interval: intervalcars;
-        running: true;
+        running: rootgame.visible;
         repeat: true
 
         onTriggered: {
 
-            cars[j]=carscomponent.createObject(parent, {"x":135, "y": -20, "img": "qrc:/Assets/cars.png", "isMovingdown" : true});
+            cars[j]=carscomponent.createObject(parent, {"x": ((parent.width/2))-15, "y": -20, "img": "qrc:/Assets/cars.png", "isMovingdown" : true});
             j++;
             intervalcars = getNumber()
         }
@@ -86,12 +123,12 @@ Rectangle {
 
     Timer {
         interval: intervalf1;
-        running: true;
+        running: rootgame.visible;
         repeat: true
 
         onTriggered: {
 
-            f1[k]=f1component.createObject(parent, {"x":235, "y": -20, "img": "qrc:/Assets/f1.png", "isMovingdown" : true});
+            f1[k]=f1component.createObject(parent, {"x":((parent.width/3)+(parent.width/2))-15, "y": -20, "img": "qrc:/Assets/f1.png", "isMovingdown" : true});
             k++;
             intervalf1 = getNumber()
         }
@@ -102,25 +139,7 @@ Rectangle {
         id : chrono
         anchors.top : parent.top
         anchors.right : parent.right
-    }
 
-    Keys.onPressed: {
-
-        if (event.key === Qt.Key_Left) {
-            if (car[1].x===35) return;
-            else
-            {
-                car[1].x -= 100
-            }
-        }
-
-        if (event.key ===  Qt.Key_Right) {
-            if (car[1].x===235) return;
-            else{
-
-                car[1].x += 100
-            }
-        }
     }
 
     function randomNumber() {
@@ -141,7 +160,7 @@ Rectangle {
 
         onTriggered: {
 
-           rootgame.color = "#1756CD"
+            rootgame.color = "#1756CD"
         }
     }
     Timer {
