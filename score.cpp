@@ -41,7 +41,6 @@ void score::writefile(QString score)
         if(!file.open(QIODevice::WriteOnly)) {
 
         }
-        myfilename.clear();
         QTextStream in(&file);
         in <<tscore;
     }

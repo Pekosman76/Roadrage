@@ -2,8 +2,6 @@ import QtQuick 2.0
 
 Image {
     id: f1id
-    width : 30
-    height :50
     
     property string img
     property bool movedown : false

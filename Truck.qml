@@ -2,8 +2,6 @@ import QtQuick 2.0
 
 Image {
     id: truckid
-    width : 30
-    height :50
 
     rotation: 180
     property string img

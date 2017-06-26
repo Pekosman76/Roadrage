@@ -2,8 +2,7 @@ import QtQuick 2.0
 
 Item {
 
-    width: 120;
-    height: 30;
+
 
     visible: true
     Component.onCompleted: {
@@ -35,6 +34,8 @@ Item {
     Text {
         id: shadow;
         text: label.text.replace (/\d/g, "8");
+        font.bold: true
+        font.pointSize: 9
         color: "gray";
         opacity: 0.15;
         anchors.fill: parent;

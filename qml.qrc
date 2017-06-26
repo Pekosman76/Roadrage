@@ -14,5 +14,8 @@
         <file>Band.qml</file>
         <file>SwipeArea.qml</file>
         <file>Menu.qml</file>
+        <file>score.h</file>
+        <file>score.cpp</file>
+        <file>main.cpp</file>
     </qresource>
 </RCC>

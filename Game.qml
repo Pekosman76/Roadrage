@@ -9,9 +9,9 @@ Rectangle {
 
     focus: true
 
-    property int intervaltruck : 2500
-    property int intervalcars : 4000
-    property int intervalf1 : 6000
+    property int intervaltruck : 1500
+    property int intervalcars : 3500
+    property int intervalf1 : 8000
 
     property var carcomponent :Qt.createComponent("Car.qml")
     property var car :[]
@@ -62,8 +62,10 @@ Rectangle {
         }
     }
 
-    Component.onCompleted: {
+    onVisibleChanged: {
 
+        restarttimer()
+        chrono.msecs = 0
     }
 
     Timer {
@@ -73,7 +75,7 @@ Rectangle {
         repeat: false
         onTriggered: {
 
-            car[1]= carcomponent.createObject(parent, {"x":(rootgame.width/2)-15, "y": rootgame.height-50, "img": "qrc:/Assets/car.png"});
+            car[1]= carcomponent.createObject(parent, {"x":(rootgame.width/2)- (rootgame.width/10)/2, "y": rootgame.height-rootgame.height/8, "img": "qrc:/Assets/car.png",  "width" : rootgame.width/10,"height" :rootgame.height/8});
             chrono.startd= true
         }
     }
@@ -102,7 +104,7 @@ Rectangle {
 
         onTriggered: {
 
-            truck[i]=truckcomponent.createObject(parent, {"x": ((parent.width/3)/2)-15, "y": 0, "img": "qrc:/Assets/truck.png", "isMovingdown" : true});
+            truck[i]=truckcomponent.createObject(parent, {"x": ((parent.width/3)/2)-(rootgame.width/10)/2, "y": -rootgame.height/8, "img": "qrc:/Assets/truck.png", "isMovingdown" : true ,  "width" : rootgame.width/10,"height" :rootgame.height/8});
             i++;
             intervaltruck= getNumber()
         }
@@ -115,7 +117,7 @@ Rectangle {
 
         onTriggered: {
 
-            cars[j]=carscomponent.createObject(parent, {"x": ((parent.width/2))-15, "y": -20, "img": "qrc:/Assets/cars.png", "isMovingdown" : true});
+            cars[j]=carscomponent.createObject(parent, {"x": ((parent.width/2))-(rootgame.width/10)/2, "y": -rootgame.height/8, "img": "qrc:/Assets/cars.png", "isMovingdown" : true ,  "width" : rootgame.width/10,"height" :rootgame.height/8});
             j++;
             intervalcars = getNumber()
         }
@@ -128,7 +130,7 @@ Rectangle {
 
         onTriggered: {
 
-            f1[k]=f1component.createObject(parent, {"x":((parent.width/3)+(parent.width/2))-15, "y": -20, "img": "qrc:/Assets/f1.png", "isMovingdown" : true});
+            f1[k]=f1component.createObject(parent, {"x":((parent.width/3)+(parent.width/2))-(rootgame.width/10)/2, "y": -rootgame.height/8, "img": "qrc:/Assets/f1.png", "isMovingdown" : true ,  "width" : rootgame.width/10,"height" :rootgame.height/8});
             k++;
             intervalf1 = getNumber()
         }
@@ -139,6 +141,9 @@ Rectangle {
         id : chrono
         anchors.top : parent.top
         anchors.right : parent.right
+        width: rootgame.width/6;
+        height: rootgame.height/20;
+
 
     }
 
@@ -155,6 +160,7 @@ Rectangle {
     }
 
     Timer {
+        id : color1
         interval: 45000;
         running: true;
 
@@ -165,6 +171,7 @@ Rectangle {
     }
     Timer {
         interval: 60000;
+        id : color2
         running: true;
 
         onTriggered: {
@@ -174,12 +181,20 @@ Rectangle {
     }
     Timer {
         interval: 75000;
+        id : color3
         running: true;
 
         onTriggered: {
 
             rootgame.color = "#1CCEDF"
         }
+    }
+
+    function restarttimer (){
+        color1.restart()
+        color2.restart()
+        color3.restart()
+
     }
 }
 
