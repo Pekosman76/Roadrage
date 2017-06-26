@@ -7,7 +7,7 @@
 score::score(QObject *parent) : QObject(parent)
 {
 
-   myfilename = QDir::currentPath()+"/score.txt";
+    myfilename = QDir::currentPath()+"/score.txt";
 }
 
 QString score::readfile()
@@ -18,25 +18,32 @@ QString score::readfile()
     }
 
     QTextStream in(&file);
-    QString line,score;
-    QStringList listscore;
+    QString line;
 
     line = in.readLine();
-    listscore = line.split(QRegExp(" "));
-    score = listscore[0];
-
-
-
-    return score;
+    return line;
 }
 
-void score::writefile(int score)
+void score::writefile(QString score)
 {
-  QFile file(myfilename);
-    if(!file.open(QIODevice::WriteOnly)) {
+    QString tscore = score;
+    score = score.remove(3,1);
 
+    int actuscore = score.toInt();
+
+    QString last = readfile();
+    last = last.remove(3,1);
+
+    if (actuscore > last.toInt())
+    {
+
+        QFile file(myfilename);
+        if(!file.open(QIODevice::WriteOnly)) {
+
+        }
+        myfilename.clear();
+        QTextStream in(&file);
+        in <<tscore;
     }
-    QTextStream in(&file);
-        in << QString::number(score);
 }
 

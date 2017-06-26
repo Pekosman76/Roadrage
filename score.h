@@ -18,7 +18,7 @@ signals:
 
 public slots:
     QString readfile();
-    void writefile(int score);
+    void writefile(QString score);
 };
 
 #endif // SCORE_H

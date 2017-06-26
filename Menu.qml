@@ -14,7 +14,7 @@ Rectangle {
         anchors.fill: parent
         gradient: Gradient {
             GradientStop { position: 0.0; color: "white" }
-            GradientStop { position: 0.7; color: "#4b6f93" }
+            GradientStop { position: 0.7; color: "#A69C9C" }
         }
     }
 
@@ -25,7 +25,7 @@ Rectangle {
         font.bold: true
         style: Text.Outline
         text: "ROADRAGE"
-        color :"#4b6f93"
+        color :"#BC4B4B"
         font.pixelSize: parent.width/8
         anchors.bottom: buttonLaunchGame.top
         anchors.bottomMargin: 40
@@ -46,7 +46,7 @@ Rectangle {
     Text{
 
         id: win
-        color: "#1f8f28"
+        color: "#BC4B4B"
         font.family: "URW Bookman L"
         font.bold: true
         text: "BEST SCORE : "+ scores.readfile()
@@ -61,7 +61,7 @@ Rectangle {
         width: parent.width/2
         height: parent.width/4
         color : "white"
-        border.color: "#7696b7"
+        border.color: "#BC4B4B"
         border.width: 8
         scale: 0.8
         radius: 25
@@ -70,7 +70,7 @@ Rectangle {
         Text {
             id: launchGame
             text: qsTr("PLAY")
-            color : "#4b6f93"
+            color : "#BC4B4B"
             font.family: "DejaVu Sans"
             font.bold: true
             verticalAlignment: Text.AlignVCenter

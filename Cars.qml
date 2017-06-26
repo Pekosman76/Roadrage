@@ -29,6 +29,9 @@ Image {
                 scores.writefile(rootgame.finaltime)
                 home.visible = true
             }
+
+            if(parent.y > rootgame.height)
+                parent.destroy
         }
     }
 }
