@@ -18,6 +18,10 @@ Rectangle {
         }
     }
 
+    onVisibleChanged: {
+        win.text =  "BEST SCORE : "+ scores.readfile()
+    }
+
     Text{
 
         id: titre

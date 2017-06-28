@@ -17,5 +17,7 @@
         <file>score.h</file>
         <file>score.cpp</file>
         <file>main.cpp</file>
+        <file>Sound.qml</file>
+        <file>Assets/ca.mp3</file>
     </qresource>
 </RCC>

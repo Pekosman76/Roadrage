@@ -66,6 +66,7 @@ Rectangle {
 
         restarttimer()
         chrono.msecs = 0
+        rootsound.gameState =  !rootsound.gameState
     }
 
     Timer {
@@ -194,6 +195,13 @@ Rectangle {
         color1.restart()
         color2.restart()
         color3.restart()
+
+    }
+
+    Sound{
+
+        id : rootsound
+        anchors.fill : parent
 
     }
 }
